@@ -1,7 +1,12 @@
 import type { Config } from 'tailwindcss';
 import typography from '@tailwindcss/typography'
 export default {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: [
+        './src/**/*.{html,js,svelte,ts}',
+        './src/routes/**/*/.{html,js,svelte,ts}',
+        './src/routes/login/**/*/.{html,js,svelte,ts}',
+        './src/routes/error/**/*/.{html,js,svelte,ts}'
+    ],
 	theme: {
         screens: {
             xxxs: '320px',
@@ -20,6 +25,7 @@ export default {
             sans: ['Montserrat', 'sans-serif'],
             serif: ['DM Serif Display', 'serif']
         },
+        prefix: 'tw-',
 		extend: {}
 	},
 	plugins: [

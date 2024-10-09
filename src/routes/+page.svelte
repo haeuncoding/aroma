@@ -1,21 +1,13 @@
 <div class="text-xl p-10">
     <div>
-        <h1 class="
-            text-stone-200 
-            font-serif 
-            font-semibold 
-            italic 
-            text-5xl
-            pb-3
-            tracking-wider
-            ">
+        <h1>
             What're they listening to?
         </h1>
     </div>
     <div>
-        <h3 class="text-stone-200 font-sans font-thin text-xs">
+        <h3>
             a summary of my newest songs on rotation. 
-                <a href="/"class="underline">
+                <a href="/"class="">
                     click me
                 </a> 
             to listen along
