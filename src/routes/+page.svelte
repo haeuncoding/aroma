@@ -1,4 +1,4 @@
-<div class="text-xl p-10">
+<div class="">
     <div>
         <h1>
             What're they listening to?

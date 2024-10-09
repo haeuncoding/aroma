@@ -1,0 +1,148 @@
+/* custom properties and variables */
+:root {
+    /* breakpoints */
+    --xxxs: 320px;
+    --xxs:  480px;
+    --xs:   600px;
+    --sm:   768px;
+    --md:   1024px;
+    --lg:   1280px;
+    --xl:   1440px;
+    /* colors */
+    --charcoal: #252525;
+    --dove-gray: #eaeaea;
+    /* fonts */
+    --sans: ['Montserrat', 'sans-serif'];
+    --serif: ['DM Serif Display', 'serif'];
+    /* padding */
+    /* margin */
+}
+
+/* text classes */
+    .montserrat {
+        font-family: "Montserrat", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+    }
+
+    .dm-serif-display-regular {
+        font-family: "DM Serif Display", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .dm-serif-display-regular-italic {
+        font-family: "DM Serif Display", serif;
+        font-weight: 400;
+        font-style: italic;
+    }
+    
+    .title-text {
+        font-size: 5em;
+    }
+    
+    .italics {
+        font-style: italic;
+    }
+    
+    .general-text {
+        font-family: var(--sans);
+    }
+
+/* component classes */
+    body {
+        background-color: var(--charcoal);
+    }
+
+    h1, h2, h3, h4, h5, h6, h7, h8, h9 {
+        color: var(--dove-gray)
+    }
+
+
+    button {
+        cursor: pointer;
+        transition: 0.3s;
+        padding: 1.5em;
+        color: var(--dove-gray);
+        background-color: rgb(16, 41, 84);
+        border-radius: 1.5em;
+        border: 1px solid var(--dove-gray);
+    }
+
+    button:hover {
+        transition: 0.3s;
+        color: var(--dove-gray);
+        background-color: rgb(10, 26, 54);
+        border-radius: 2em;
+        border: 1px solid rgb(10, 26, 54);
+        filter: drop-shadow(0rem 1rem black);
+    }
+
+
+/* position classes */
+    .mlr-auto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+/* 3XS devices (phones, 320px and down) */
+@media only screen and (max-width: var(--xxxs)) {
+    .login-div {
+        padding: var(--xxxs) / + 2vh;
+    }
+}
+
+
+/* XXS devices (phones, between 321px and 480px) */
+@media only screen and (max-width: var(--xxs)) {
+    .login-div {
+        padding: var(--xxs)  / + 2vh;
+    }
+}
+
+/* XS devices (phones, between 481px and 600px) */
+@media only screen and (max-width: var(--xs)) {
+    .login-div {
+        padding: var(--xs)  / + 2vh;
+    }
+}
+
+
+/* Small devices (portrait tablets and large phones, between 601px and 768) */
+@media only screen and (max-width: var(--sm)) {
+    .login-div {
+        padding: var(--sm)  / + 2vh;
+    }
+}
+
+/* Medium devices (landscape tablets, between 769px and 1024px) */
+@media only screen and (max-width: var(--md)) {
+    .login-div {
+        padding: var(--md)  / + 2vh;
+    }
+}
+
+/* Large devices (laptops/desktops, between 1025px and 1280px) */
+@media only screen and (max-width: var(--lg)) {
+    .login-div {
+        padding: var(--lg)  / + 2vh;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, between 1281px and 1440px) */
+@media only screen and (max-width: var(--xl)) {
+    .login-div {
+        padding: var(--xl) / + 2vh;
+    }
+}
+
+/* XXL devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: var(--xl)) {
+    .login-div {
+        padding: var(--xl) / + 2vh;
+    }
+}
