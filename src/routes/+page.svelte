@@ -5,9 +5,9 @@
         </h1>
     </div>
     <div>
-        <h3>
+        <h3 class="montserrat">
             a summary of my newest songs on rotation. 
-                <a href="/"class="">
+                <a href="/"class="montserrat">
                     click me
                 </a> 
             to listen along
