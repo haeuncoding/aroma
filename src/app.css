@@ -14,7 +14,7 @@
     /* fonts */
     --sans: ['Montserrat', 'sans-serif'];
     --serif: ['DM Serif Display', 'serif'];
-    /* padding */
+    /* margin-top */
     /* margin */
 }
 
@@ -59,24 +59,24 @@
     }
 
 
-    button {
+    /* button, .button {
         cursor: pointer;
         transition: 0.3s;
-        padding: 1.5em;
+        margin-top: 1.5em;
         color: var(--dove-gray);
         background-color: rgb(16, 41, 84);
-        border-radius: 1.5em;
+        border-radius: 4em;
         border: 1px solid var(--dove-gray);
     }
 
-    button:hover {
+    button:hover, .button:hover {
         transition: 0.3s;
         color: var(--dove-gray);
         background-color: rgb(10, 26, 54);
-        border-radius: 2em;
+        border-radius: 4.5em;
         border: 1px solid rgb(10, 26, 54);
         filter: drop-shadow(0rem 1rem black);
-    }
+    } */
 
 
 /* position classes */
@@ -90,59 +90,43 @@
     }
 
 /* 3XS devices (phones, 320px and down) */
-@media only screen and (max-width: var(--xxxs)) {
-    .login-div {
-        padding: var(--xxxs) / + 2vh;
-    }
+@media only screen and (max-width: 320px) {
+
 }
 
 
 /* XXS devices (phones, between 321px and 480px) */
-@media only screen and (max-width: var(--xxs)) {
-    .login-div {
-        padding: var(--xxs)  / + 2vh;
-    }
+@media only screen and (max-width: 480px) {
+
 }
 
 /* XS devices (phones, between 481px and 600px) */
-@media only screen and (max-width: var(--xs)) {
-    .login-div {
-        padding: var(--xs)  / + 2vh;
-    }
+@media only screen and (max-width: 600px) {
+
 }
 
 
 /* Small devices (portrait tablets and large phones, between 601px and 768) */
-@media only screen and (max-width: var(--sm)) {
-    .login-div {
-        padding: var(--sm)  / + 2vh;
-    }
+@media only screen and (max-width: 768px) {
+
 }
 
 /* Medium devices (landscape tablets, between 769px and 1024px) */
-@media only screen and (max-width: var(--md)) {
-    .login-div {
-        padding: var(--md)  / + 2vh;
-    }
+@media only screen and (max-width: 1024px) {
+
 }
 
 /* Large devices (laptops/desktops, between 1025px and 1280px) */
-@media only screen and (max-width: var(--lg)) {
-    .login-div {
-        padding: var(--lg)  / + 2vh;
-    }
+@media only screen and (max-width: 1280px) {
+
 }
 
 /* Extra large devices (large laptops and desktops, between 1281px and 1440px) */
-@media only screen and (max-width: var(--xl)) {
-    .login-div {
-        padding: var(--xl) / + 2vh;
-    }
+@media only screen and (max-width: 1440px) {
+
 }
 
 /* XXL devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: var(--xl)) {
-    .login-div {
-        padding: var(--xl) / + 2vh;
-    }
+@media only screen and (min-width: 1440px) {
+
 }

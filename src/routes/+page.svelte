@@ -1,3 +1,14 @@
+<script>
+
+	import '../app.css';
+
+    let SpotifyAPI = 'https://api.spotify.com'
+    async function logoutClick() {
+        localStorage.clear();
+        window.location.href = '/';
+    }
+</script>
+
 <div class="">
     <div>
         <h1>
@@ -14,6 +25,7 @@
         </h3>
     </div>
 </div>
+<button on:click={logoutClick}>Logout</button>
 
 <style lang="postcss">
 
