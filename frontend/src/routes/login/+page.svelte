@@ -1,10 +1,13 @@
 <script>
+
     import '../../app.css'
     import './login.css'
+    import { CLIENT_ID } from '$env/static/private';
+    const REDIRECT_URI = "http://localhost:5173"
+    const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
+    const RESPONSE_TYPE = "token"
     async function login() {
-        await fetch('/auth/spotify',{
-            method: 'GET',
-        }); // Trigger the server-side redirect
+        window.location.href = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`
     }
 </script>
 

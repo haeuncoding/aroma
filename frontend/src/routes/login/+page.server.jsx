@@ -4,7 +4,7 @@ import { json } from '@sveltejs/kit'
 
 let data;
 
-const redirectUrl = 'eg:http://localhost:8080';        // your redirect URL - must be localhost URL and/or HTTPS
+const redirectUrl = 'eg:http://localhost:5173';        // your redirect URL - must be localhost URL and/or HTTPS
 const authorizationEndpoint = "https://accounts.spotify.com/authorize";
 const tokenEndpoint = "https://accounts.spotify.com/api/token";
 const scope = 'user-read-private user-read-email';
