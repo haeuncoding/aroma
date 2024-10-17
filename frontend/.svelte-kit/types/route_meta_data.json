@@ -1,5 +1,10 @@
 {
 	"/": [],
+	"/callback": [
+		"src/routes/callback/+server.js"
+	],
 	"/error": [],
-	"/login": []
+	"/login": [
+		"src/routes/login/+server.js"
+	]
 }

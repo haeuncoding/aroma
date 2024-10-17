@@ -19,22 +19,6 @@ app.get('/test', (req, res) => {
     res.send('you did it!')
 })
 
-// Step 1: Redirect to Spotify's authorization endpoint
-app.get('/login', (req, res) => {
-    // const authEndpoint = 'https://accounts.spotify.com/authorize';
-    // const scope = 'user-read-private user-read-email';
-    // const queryParams = new URLSearchParams({
-    //     client_id: CLIENT_ID,
-    //     response_type: 'code',
-    //     redirect_uri: REDIRECT_URI,
-    //     scope: scope,
-    // }).toString();
-
-    // res.redirect(`${authEndpoint}?${queryParams}`);
-    const authUrl = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(SCOPE)}`
-    res.send(authUrl)
-});
-
 // Step 2: Handle the callback from Spotify with the authorization code
 app.get('/callback', async (req, res) => {
     const code = req.query.code;
