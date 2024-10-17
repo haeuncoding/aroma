@@ -15,23 +15,29 @@
         let rToken = sessionStorage.getItem('refreshToken')
         if (!aToken || !rToken) return false;
         if (aToken && rToken) return true;
+        return false;
     }
-
+    let tokensPresence: boolean
+    onMount(() => {
+        tokensPresence = checkForTokens()
+    })
 
 </script>
 
-{#if checkForTokens() === false}
+{#if tokensPresence === false}
     <div class="">
         <h2>
             Please click the button below to go to the login screen.
         </h2>
     </div>
     <a class="session-button" href="/login">
-        Go to Login
+        <h3>
+            Go to Login
+        </h3>
     </a>
 {/if}
 
-{#if checkForTokens() === true}
+{#if tokensPresence === true}
     <div class="">
         <div>
             <h1>
@@ -48,7 +54,11 @@
             </h3>
         </div>
     </div>
-    <button class="session-button" on:click={logoutClick}>Logout</button>
+    <button class="session-button" on:click={logoutClick}>
+        <h4>
+            Logout
+        </h4>
+    </button>
 {/if}
 
 <style lang="postcss">
