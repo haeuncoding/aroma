@@ -7,9 +7,7 @@
         const response = await fetch('/login');
         let spotifyURL = await response.text();
         let url = new URL(spotifyURL)
-        console.log({spotifyURL})
-        let spotifyLoginModal = window.open(url)
-        console.log(spotifyLoginModal)
+        window.open(url, "_self",)
     }
 
     async function callback() {

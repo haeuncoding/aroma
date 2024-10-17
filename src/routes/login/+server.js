@@ -30,11 +30,11 @@ export async function GET() {
         let loginURL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=${scope}`
         return new Response(loginURL)
     } catch (err) {
+        console.log(err)
         return new Response(err, {
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        console.log(err)
     }
 }
