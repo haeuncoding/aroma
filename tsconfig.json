@@ -9,14 +9,10 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-        "types": [
-            "node"
-        ],
-        "typeRoots": [
-            "../node_modules/@types"
-        ],
+		"types": ["node"],
+		"typeRoots": ["../node_modules/@types"],
 		"moduleResolution": "bundler"
-	},
+	}
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
 	// except $lib which is handled by https://kit.svelte.dev/docs/configuration#files
 	//

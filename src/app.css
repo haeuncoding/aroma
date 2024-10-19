@@ -1,65 +1,215 @@
 /* custom properties and variables */
 :root {
-    /* breakpoints */
-    --xxxs: 320px;
-    --xxs:  480px;
-    --xs:   600px;
-    --sm:   768px;
-    --md:   1024px;
-    --lg:   1280px;
-    --xl:   1440px;
-    /* colors */
-    --charcoal: #252525;
-    --dove-gray: #eaeaea;
-    /* fonts */
-    --sans: ['Montserrat', 'sans-serif'];
-    --serif: ['DM Serif Display', 'serif'];
-    /* margin-top */
-    /* margin */
+	/* breakpoints */
+	--xxxs: 320px;
+	--xxs: 480px;
+	--xs: 600px;
+	--sm: 768px;
+	--md: 1024px;
+	--lg: 1280px;
+	--xl: 1440px;
+	/* colors */
+	--charcoal: #252525;
+	--dove-gray: #eaeaea;
+	/* fonts */
+	--sans: [ 'Montserrat', 'sans-serif'];
+	--serif: [ 'DM Serif Display', 'serif'];
+	/* margin-top */
+	/* margin */
 }
 
 /* text classes */
-    .montserrat {
-        font-family: "Montserrat", serif;
-        font-optical-sizing: auto;
-        font-style: normal;
-    }
+.montserrat-100 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 100;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
 
-    .dm-serif-display-regular {
-        font-family: "DM Serif Display", serif;
-        font-weight: 400;
-        font-style: normal;
-    }
+.montserrat-100i {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 100;
+	font-optical-sizing: auto;
+	font-style: italic;
+}
 
-    .dm-serif-display-regular-italic {
-        font-family: "DM Serif Display", serif;
-        font-weight: 400;
-        font-style: italic;
-    }
-    
-    .title-text {
-        font-size: 5em;
-    }
-    
-    .italics {
-        font-style: italic;
-    }
-    
-    .general-text {
-        font-family: var(--sans);
-    }
+.montserrat-200 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 200;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+.montserrat-200i {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 200;
+	font-optical-sizing: auto;
+	font-style: italic;
+}
+
+.montserrat-300 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+.montserrat-300i {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-optical-sizing: auto;
+	font-style: italic;
+}
+
+.montserrat {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+.montserrat-i {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+	font-optical-sizing: auto;
+	font-style: italic;
+}
+
+.montserrat-500 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+.montserrat-500i {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-optical-sizing: auto;
+	font-style: italic;
+}
+
+.montserrat-600 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+.montserrat-600i {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	font-optical-sizing: auto;
+	font-style: italic;
+}
+
+.montserrat-700 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+.montserrat-700i {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	font-optical-sizing: auto;
+	font-style: italic;
+}
+
+.montserrat-800 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 800;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+.montserrat-800i {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 800;
+	font-optical-sizing: auto;
+	font-style: italic;
+}
+
+.montserrat-900 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+.montserrat-900i {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+	font-optical-sizing: auto;
+	font-style: italic;
+}
+
+.red-rose-light {
+	font-family: 'Red Rose', serif;
+	font-weight: 300;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+.red-rose {
+	font-family: 'Red Rose', serif;
+	font-weight: 400;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+.red-rose-med {
+	font-family: 'Red Rose', serif;
+	font-weight: 500;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+.red-rose-semi-bold {
+	font-family: 'Red Rose', serif;
+	font-weight: 600;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+.red-rose-bold {
+	font-family: 'Red Rose', serif;
+	font-weight: 700;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+.title-text {
+	font-size: 5em;
+}
+
+.italics {
+	font-style: italic;
+}
+
+.general-text {
+	font-family: var(--sans);
+}
 
 /* component classes */
-    body {
-        background-color: var(--charcoal);
-    }
+body {
+	background-color: var(--charcoal);
+}
 
-    h1, h2, h3, h4, h5, h6, h7, h8, h9 {
-        color: var(--dove-gray)
-    }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h7,
+h8,
+h9 {
+	color: var(--dove-gray);
+}
 
-
-    /* button, .button {
+/* button, .button {
         cursor: pointer;
         transition: 0.3s;
         margin-top: 1.5em;
@@ -78,77 +228,67 @@
         filter: drop-shadow(0rem 1rem black);
     } */
 
-    .session-button {
-        padding-left: 2.5em;
-        padding-right: 2.5em;
-        cursor: pointer;
-        transition: 0.3s;
-        margin-top: 1.5em;
-        color: var(--dove-gray);
-        background-color: rgb(16, 41, 84);
-        border-radius: 4em;
-        border: 1px solid #eaeaea4e;
-    }
+.session-button {
+	padding-left: 2.5em;
+	padding-right: 2.5em;
+	text-decoration: none;
+	cursor: pointer;
+	transition: 0.3s;
+	margin-top: 1.5em;
+	color: var(--dove-gray);
+	background-color: rgb(16, 41, 84);
+	border-radius: 4em;
+	border: 1px solid #eaeaea4e;
+}
 
-    .session-button:hover {
-        transition: 0.3s;
-        color: var(--dove-gray);
-        background-color: rgb(10, 26, 54);
-        border-radius: 4.5em;
-        border: 1px solid rgb(10, 26, 54);
-        margin-top: 1.45em;
-        filter: drop-shadow(0rem 0.5rem black);
-    }
-
+.session-button:hover {
+	transition: 0.3s;
+	color: var(--dove-gray);
+	background-color: rgb(10, 26, 54);
+	border-radius: 4.5em;
+	border: 1px solid rgb(10, 26, 54);
+	margin-top: 1.45em;
+	filter: drop-shadow(0rem 0.5rem black);
+}
 
 /* position classes */
-    .mlr-auto {
-        margin-left: auto;
-        margin-right: auto;
-    }
+.mlr-auto {
+	margin-left: auto;
+	margin-right: auto;
+}
 
-    .text-center {
-        text-align: center;
-    }
+.text-center {
+	text-align: center;
+}
 
 /* 3XS devices (phones, 320px and down) */
 @media only screen and (max-width: 320px) {
-
 }
-
 
 /* XXS devices (phones, between 321px and 480px) */
 @media only screen and (max-width: 480px) {
-
 }
 
 /* XS devices (phones, between 481px and 600px) */
 @media only screen and (max-width: 600px) {
-
 }
-
 
 /* Small devices (portrait tablets and large phones, between 601px and 768) */
 @media only screen and (max-width: 768px) {
-
 }
 
 /* Medium devices (landscape tablets, between 769px and 1024px) */
 @media only screen and (max-width: 1024px) {
-
 }
 
 /* Large devices (laptops/desktops, between 1025px and 1280px) */
 @media only screen and (max-width: 1280px) {
-
 }
 
 /* Extra large devices (large laptops and desktops, between 1281px and 1440px) */
 @media only screen and (max-width: 1440px) {
-
 }
 
 /* XXL devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1440px) {
-
 }
