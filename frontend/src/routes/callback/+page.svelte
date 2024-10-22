@@ -1,10 +1,15 @@
 <script>
-  import { onMount } from 'svelte';
-  import { goto } from '$app/navigation';
+    import '../../app.css'
+    import { onMount } from 'svelte';
+    import { goto } from '$app/navigation';
 
     let error = '';
     let errorMsg  = ''
     let errorStatus = ''
+
+    $: error
+    $: errorMsg
+    $: errorStatus
   // When the page is loaded, check the query parameters for the authorization code
   onMount(() => {
     const params = new URLSearchParams(window.location.search);
@@ -50,15 +55,14 @@
   });
 </script>
 
-{#if error}
-  <p>Error: {error}</p>  
+<div class="text-center mlr-auto">
+    {#if !error}
+        <h1 class="red-rose">Logging you in...</h1>
+    {/if}
+            
+    {#if error}
+        <h2 class="red-rose">Error: {error}</h2>  
+        <h2 class="red-rose">Error: {errorStatus} - {errorMsg}</h2>
+    {/if}
 
-{/if}
-
-{#if errorMsg}
-  <p>Error: {error}</p>  
-  <p>Error: {errorStatus} - {errorMsg}</p>
-{/if}
-
-
-<p>Logging you in...</p>
+</div>

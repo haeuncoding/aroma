@@ -13,7 +13,7 @@
 </script>
 
 <div class="login-div text-center mlr-auto">
-	<h1 class="title-text dm-serif-display-regular-italic">
+	<h1 class="title-text red-rose">
 		Let's get started.
 	</h1>
 

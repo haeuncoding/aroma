@@ -3,11 +3,13 @@ const express = require('express');
 const cors = require('cors'); // Enable CORS for SvelteKit to communicate
 const axios = require('axios');
 const cookieParser = require('cookie-parser')
-const querystring = require('querystring');
+const { URLSearchParams } = require('url')
+// const { URLSearchParams } = require('url-search-params');
 require('dotenv').config();
 
 const app = express();
 app.use(cookieParser()); // To handle cookie parsing
+
 app.use(cors()); // Enable CORS
 app.use(express.json()); // To handle JSON requests from frontend
 const CLIENT_ID = process.env.CLIENT_ID;
@@ -43,17 +45,17 @@ app.get('/auth/spotify', (req, res) => {
     console.log({state})
 
 
-  const scope = 'user-read-private user-read-email';
-  const authUrl = 'https://accounts.spotify.com/authorize?' + 
-    querystring.stringify({
-      response_type: 'code',
-      client_id: CLIENT_ID,
-      scope: scope,
-      redirect_uri: REDIRECT_URI,
-      state,
-    });
-
-  res.redirect(authUrl);
+    const scope = 'user-read-private user-read-email';
+    const params = new URLSearchParams({
+        response_type: 'code',
+        client_id: CLIENT_ID,
+        scope: scope,
+        redirect_uri: REDIRECT_URI,
+        state,
+        });
+    
+    const authUrl = `https://accounts.spotify.com/authorize?${params.toString()}`
+    res.redirect(authUrl);
 });
 
 // Step 2: Spotify redirects back with code (OAuth callback)
@@ -90,20 +92,22 @@ app.get('/auth/callback', async (req, res) => {
 
   console.log({code, state})
   try {
+    const params = new URLSearchParams({
+            grant_type: 'authorization_code',
+            code: code,
+            redirect_uri: REDIRECT_URI,
+            client_id: CLIENT_ID,
+            client_secret: CLIENT_SECRET,
+        });
+
     const tokenResponse = await axios.post(
-      'https://accounts.spotify.com/api/token',
-      querystring.stringify({
-        grant_type: 'authorization_code',
-        code: code,
-        redirect_uri: REDIRECT_URI,
-        client_id: CLIENT_ID,
-        client_secret: CLIENT_SECRET,
-      }),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      }
+        'https://accounts.spotify.com/api/token',
+        params.toString(), // Use toString() to convert params to a query string
+        {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        }
     );
 
     const { access_token, refresh_token, expires_in } = tokenResponse.data;
@@ -145,19 +149,21 @@ app.post('/refresh_token', async (req, res) => {
   const refreshToken = req.body.refresh_token;
 
   try {
+    const params = new URLSearchParams({
+            grant_type: 'refresh_token',
+            refresh_token: refreshToken,
+            client_id: CLIENT_ID,
+            client_secret: CLIENT_SECRET,
+        });
+
     const tokenResponse = await axios.post(
-      'https://accounts.spotify.com/api/token',
-      querystring.stringify({
-        grant_type: 'refresh_token',
-        refresh_token: refreshToken,
-        client_id: CLIENT_ID,
-        client_secret: CLIENT_SECRET,
-      }),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      }
+        'https://accounts.spotify.com/api/token',
+        params.toString(), // Use toString() to convert params to a query string
+        {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        }
     );
 
     const { access_token } = tokenResponse.data;
@@ -166,6 +172,12 @@ app.post('/refresh_token', async (req, res) => {
   } catch (error) {
     res.status(400).send('Failed to refresh token');
   }
+});
+
+// Logout route to clear the cookie
+app.get('/logout', (req, res) => {
+  res.clearCookie('spotify_auth_state'); // Replace with your actual cookie name
+  res.send('Logged out successfully!');
 });
 
 // Start the Express server on port 3000
