@@ -26,9 +26,7 @@
  * ```
  */
 declare module '$env/static/private' {
-	export const CLIENT_ID: string;
-	export const CLIENT_SECRET: string;
-	export const REDIRECT_URI: string;
+	export const VITE_DEV_BACKEND: string;
 	export const LESSOPEN: string;
 	export const USER: string;
 	export const npm_config_user_agent: string;
@@ -128,9 +126,7 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
-		CLIENT_ID: string;
-		CLIENT_SECRET: string;
-		REDIRECT_URI: string;
+		VITE_DEV_BACKEND: string;
 		LESSOPEN: string;
 		USER: string;
 		npm_config_user_agent: string;

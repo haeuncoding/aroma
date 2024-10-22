@@ -1,12 +1,29 @@
 <script>
-
+    
+    import { onMount } from 'svelte';
 	import '../app.css';
 
     let SpotifyAPI = 'https://api.spotify.com'
+    let accessToken = '';
+    let userProfile = null;
+
     async function logoutClick() {
         localStorage.clear();
         window.location.href = '/';
     }
+
+
+  // On mount, check for an access token in localStorage
+  onMount(async () => {
+    accessToken = localStorage.getItem('access_token');
+
+    if (accessToken) {
+      // Fetch the user's Spotify profile using the access token
+      const res = await fetch(`http://localhost:3001/me?access_token=${accessToken}`);
+      userProfile = await res.json();
+    }
+  }
+  );
 </script>
 
 <div class="">

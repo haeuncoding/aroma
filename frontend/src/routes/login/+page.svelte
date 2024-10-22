@@ -1,21 +1,15 @@
-<script>
-
+<script lang='ts'>
     import '../../app.css'
     import './login.css'
 
+    const backendURL = import.meta.env.VITE_DEV_BACKEND
+
     async function login() {
-        const response = await fetch('/login');
-        let spotifyURL = await response.text();
-        let url = new URL(spotifyURL)
-        console.log({spotifyURL})
-        let spotifyLoginModal = window.open(url)
-        console.log(spotifyLoginModal)
+        let loginURL = `${backendURL}/auth/spotify`;
+        console.log({loginURL})
+        window.location.href = loginURL;
     }
 
-    async function callback() {
-        const response = await fetch('/callback');
-        let tokens = await response.json();
-    }
 </script>
 
 <div class="login-div text-center mlr-auto">

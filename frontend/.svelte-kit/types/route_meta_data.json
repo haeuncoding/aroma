@@ -1,10 +1,6 @@
 {
 	"/": [],
-	"/callback": [
-		"src/routes/callback/+server.js"
-	],
+	"/callback": [],
 	"/error": [],
-	"/login": [
-		"src/routes/login/+server.js"
-	]
+	"/login": []
 }
