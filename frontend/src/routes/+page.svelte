@@ -29,8 +29,9 @@
 
 		if (accessToken) {
 			// Fetch the user's Spotify profile using the access token
-			const res = await fetch(`http://localhost:3001/me?access_token=${accessToken}`);
+			const res = await fetch(`http://localhost:3000/me?access_token=${accessToken}`);
 			userProfile = await res.json();
+            console.log(userProfile)
 		}
 	});
 </script>
