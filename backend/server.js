@@ -23,11 +23,6 @@ const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 const STATE_KEY = 'spotify_auth_state';
 
-console.log({
-    CLIENT_ID,
-    CLIENT_SECRET,
-    REDIRECT_URI
-})
 // Generate random state for security
 const generateRandomString = (length) => {
   let text = '';
@@ -67,10 +62,9 @@ app.get('/auth/callback', async (req, res) => {
     const { code, state } = req.query;
 
     // Retrieving the state from the cookie.
-    console.log({
-        "req cookies": req.cookies
-    })
     const storedState = req.cookies.spotify_auth_state;
+    
+    // Console confirmation that the states match.
     console.log({
         'stateMatch?': state === storedState
     })
@@ -91,7 +85,6 @@ app.get('/auth/callback', async (req, res) => {
     }).send()
   }
 
-  console.log({code, state})
   try {
 
     res.clearCookie('spotify_auth_state', { path: '/' });
@@ -115,12 +108,6 @@ app.get('/auth/callback', async (req, res) => {
     );
 
     const { access_token, refresh_token, expires_in } = tokenResponse.data;
-
-    console.log({
-        access_token, 
-        refresh_token, 
-        expires_in,
-    })
 
     // Send tokens to the frontend (you could also store these in a database)
     return res.json({ 

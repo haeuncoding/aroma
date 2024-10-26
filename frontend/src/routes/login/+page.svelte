@@ -6,7 +6,6 @@
 
 	async function login() {
 		let loginURL = `${backendURL}/auth/spotify`;
-		console.log({ loginURL });
 		window.location.href = loginURL;
 	}
 </script>

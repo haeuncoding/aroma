@@ -29,10 +29,9 @@
                     return response.json();
                 })
 				.then((data) => {
-                    console.log(data)
 					const accessToken = data.access_token;
 					const refreshToken = data.refresh_token;
-					console.log(data);
+
 					if (data.status !== 200 || data.ok !== true) {
 						errorStatus = data.status.toString();
 						errorMsg = data.message;
