@@ -1,73 +1,65 @@
-.login-button, .login-button > * {
-    text-decoration: none;
-    margin-top: 2vh;
+.login-button,
+.login-button > * {
+	text-decoration: none;
+	margin-top: 2vh;
 }
 
 .login-div {
-    margin-top: 30vh
+	margin-top: 30vh;
 }
 
 .login-button {
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 1.5em;
-    color: var(--dove-gray);
-    background-color: rgb(16, 41, 84);
-    border-radius: 4em;
-    border: 1px solid #eaeaea4e;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	cursor: pointer;
+	transition: 0.3s;
+	margin-top: 1.5em;
+	color: var(--dove-gray);
+	background-color: rgb(16, 41, 84);
+	border-radius: 4em;
+	border: 1px solid #eaeaea4e;
 }
 
 .login-button:hover {
-    transition: 0.3s;
-    color: var(--dove-gray);
-    background-color: rgb(10, 26, 54);
-    border-radius: 4.5em;
-    border: 1px solid rgb(10, 26, 54);
-    margin-top: 1em;
-    filter: drop-shadow(0rem 1rem black);}
+	transition: 0.3s;
+	color: var(--dove-gray);
+	background-color: rgb(10, 26, 54);
+	border-radius: 4.5em;
+	border: 1px solid rgb(10, 26, 54);
+	margin-top: 1em;
+	filter: drop-shadow(0rem 1rem black);
+}
 
 /* 3XS devices (phones, 320px and down) */
 @media only screen and (max-width: 320px) {
-
 }
-
 
 /* XXS devices (phones, between 321px and 480px) */
 @media only screen and (max-width: 480px) {
-
 }
 
 /* XS devices (phones, between 481px and 600px) */
 @media only screen and (max-width: 600px) {
-
 }
-
 
 /* Small devices (portrait tablets and large phones, between 601px and 768px) */
 @media only screen and (max-width: 768px) {
-
 }
 
 /* Medium devices (landscape tablets, between 769px and 1024px) */
 @media only screen and (max-width: 1024px) {
-
 }
 
 /* Large devices (laptops/desktops, between 1025px and 1280px) */
 @media only screen and (max-width: 1280px) {
-
 }
 
 /* Extra large devices (large laptops and desktops, between 1281px and 1440px) */
 @media only screen and (max-width: 1440px) {
-
 }
 
 /* XXL devices (large laptops and desktops, 1440px and up) */
 @media only screen and (min-width: 1440px) {
-
 }

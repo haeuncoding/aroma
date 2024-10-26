@@ -1,33 +1,38 @@
 <script>
-    
-    import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import '../app.css';
+    import { goto } from '$app/navigation';
+	let SpotifyAPI = 'https://api.spotify.com';
+	let accessToken = '';
+	let userProfile = null;
 
-    let SpotifyAPI = 'https://api.spotify.com'
-    let accessToken = '';
-    let userProfile = null;
+	async function logoutClick() {
+        fetch(`http://localhost:3000/logout`)
+            .then((response) => {
+                return response.json()
+            })
+            .then ((res) => {
+                if (res.status === 200) {
+                    sessionStorage.clear();
+                    goto('/login')
+                }
+            })
+	}
 
-    async function logoutClick() {
-        localStorage.clear();
-        window.location.href = '/';
-    }
-
-    async function goToLogin() {
+	async function goToLogin() {
 		window.location.href = '/login';
 	}
 
+	// On mount, check for an access token in localStorage
+	onMount(async () => {
+		let accessToken = sessionStorage.getItem('access_token');
 
-  // On mount, check for an access token in localStorage
-  onMount(async () => {
-    accessToken = localStorage.getItem('access_token');
-
-    if (accessToken) {
-      // Fetch the user's Spotify profile using the access token
-      const res = await fetch(`http://localhost:3001/me?access_token=${accessToken}`);
-      userProfile = await res.json();
-    }
-  }
-  );
+		if (accessToken) {
+			// Fetch the user's Spotify profile using the access token
+			const res = await fetch(`http://localhost:3001/me?access_token=${accessToken}`);
+			userProfile = await res.json();
+		}
+	});
 </script>
 
 {#if !accessToken}
@@ -52,12 +57,11 @@
 		</h3>
 	</div>
 </div>
-<button class="session-button" on:click={logout}>
+<button class="session-button" on:click={logoutClick}>
 	<h4 class="montserrat-500">Logout</h4>
 </button>
 
 <!-- {/if} -->
 
 <style lang="postcss">
-
 </style>

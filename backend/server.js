@@ -10,7 +10,13 @@ require('dotenv').config();
 const app = express();
 app.use(cookieParser()); // To handle cookie parsing
 
-app.use(cors()); // Enable CORS
+const corsOptions = {
+    origin: process.env.FRONTEND_URL || 'http://localhost:5173',    // Explicitly allow only SvelteKit origin
+    credentials: true,                                              // Allow cookies and other credentials
+}
+// (corsOptions)
+
+app.use(cors(corsOptions)); // Enable CORS
 app.use(express.json()); // To handle JSON requests from frontend
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
@@ -37,13 +43,10 @@ app.get('/auth/spotify', (req, res) => {
     const state = generateRandomString(64);
     res.cookie(STATE_KEY, state, { 
         httpOnly: true, 
-        secure: true, 
+        secure: process.env.NODE_ENV === 'production', 
         path: '/',
-        sameSite: true,
+        // sameSite: "none",
     });
-        
-    console.log({state})
-
 
     const scope = 'user-read-private user-read-email';
     const params = new URLSearchParams({
@@ -65,13 +68,11 @@ app.get('/auth/callback', async (req, res) => {
 
     // Retrieving the state from the cookie.
     console.log({
-        req,
-        cookies: req.cookies
+        "req cookies": req.cookies
     })
     const storedState = req.cookies.spotify_auth_state;
     console.log({
-        state,
-        storedState
+        'stateMatch?': state === storedState
     })
 
   if (state === null) {
@@ -92,6 +93,9 @@ app.get('/auth/callback', async (req, res) => {
 
   console.log({code, state})
   try {
+
+    res.clearCookie('spotify_auth_state', { path: '/' });
+
     const params = new URLSearchParams({
             grant_type: 'authorization_code',
             code: code,
@@ -112,8 +116,14 @@ app.get('/auth/callback', async (req, res) => {
 
     const { access_token, refresh_token, expires_in } = tokenResponse.data;
 
+    console.log({
+        access_token, 
+        refresh_token, 
+        expires_in,
+    })
+
     // Send tokens to the frontend (you could also store these in a database)
-    res.json({ 
+    return res.json({ 
         access_token, 
         refresh_token, 
         expires_in,
@@ -177,7 +187,10 @@ app.post('/refresh_token', async (req, res) => {
 // Logout route to clear the cookie
 app.get('/logout', (req, res) => {
   res.clearCookie('spotify_auth_state'); // Replace with your actual cookie name
-  res.send('Logged out successfully!');
+    res.json({
+        ok: true,
+        status: 200,
+    });
 });
 
 // Start the Express server on port 3000

@@ -1,6 +1,5 @@
 <script>
-	import { error } from "console";
-
+	import { error } from 'console';
 </script>
 
 <h1>Whoops!</h1>
