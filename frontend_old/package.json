@@ -1,0 +1,20 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "aroma frontend",
+  "main": "eslint.config.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "aroma"
+  },
+  "keywords": [
+    "frontend",
+    "aroma"
+  ],
+  "author": "Nathan Kwon, Catherine Liu",
+  "license": "ISC"
+}

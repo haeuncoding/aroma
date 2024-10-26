@@ -1,9 +1,8 @@
 <script>
-	import '../app.css';
+	import '../../app.css';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-    import { navigating } from '$app/stores';
-    import { SpinLine } from 'svelte-loading-spinners'
+
 	let error = '';
 	let errorMsg = '';
 	let errorStatus = '';
@@ -58,67 +57,15 @@
 				});
 		}
 	});
-
-    function goToLogin() {
-        goto('/login')
-    }
 </script>
 
-{#if !error}
-    <div class="mlr-auto text-center logging-in-div">
-        <div class="spin-container">
-            <SpinLine size="70" color="#eaeaea" unit="px" duration="4s"/>
-        </div>
-        <div class="logging-in-text-div">
-            <h1 class="logging-in-text red-rose">Logging you in...</h1>
-        </div>
-    </div>
-{/if}
+<div class="mlr-auto text-center">
+	{#if !error}
+		<h1 class="red-rose">Logging you in...</h1>
+	{/if}
 
-{#if error}
-    <div class="mlr-auto text-center error-logging-in-div">
-
-        <h2 class="red-rose">Error: {errorStatus} - {errorMsg}</h2>
-        
-        <h2 class="montserrat error-text"> Please try logging in again.</h2>
-        <button class="session-button" on:click={goToLogin}>
-            <h3 class="montserrat">
-                Back to Login
-            </h3>
-        </button>
-    </div>
-{/if}
-    
-<style>
-    .logging-in-div {
-        text-align: center;
-        align-items: center;
-        margin-top: 45vh
-    }
-
-    .logging-in-text-div {
-        margin-top: 5vh;
-    }
-
-    .logging-in-text {
-        font-size: 1.5em;
-    }
-    
-
-    .spin-container {
-        margin-left: auto;
-        margin-right: auto;
-        width: fit-content;
-        min-height: max-content;
-    }
-
-    .error-logging-in-div {
-        text-align: center;
-        align-items: center;
-        margin-top: 35vh
-    }
-
-    .error-text {
-        font-size: 1rem;
-    }
-</style>
+	{#if error}
+		<h2 class="red-rose">Error: {error}</h2>
+		<h2 class="red-rose">Error: {errorStatus} - {errorMsg}</h2>
+	{/if}
+</div>

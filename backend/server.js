@@ -63,7 +63,7 @@ app.get('/auth/callback', async (req, res) => {
 
     // Retrieving the state from the cookie.
     const storedState = req.cookies.spotify_auth_state;
-    
+    const stateMatch = state !== storedState
     // Console confirmation that the states match.
     console.log({
         'stateMatch?': state === storedState
@@ -77,7 +77,7 @@ app.get('/auth/callback', async (req, res) => {
     }).send();
   }
 
-  if (state !== storedState) {
+  if (stateMatch) {
     return res.json({
         message: 'State does not match. Possible CSRF attack. >:( Or Nathan just messed up again. Whoops!',
         status: 403,
@@ -124,13 +124,13 @@ app.get('/auth/callback', async (req, res) => {
 });
 
 // Step 3: Fetch user profile using access token
-app.get('/me', async (req, res) => {
-  const accessToken = req.query.access_token;
+app.get('/user', async (req, res) => {
+  const Authorization = req.headers.authorization;
 
   try {
     const userProfile = await axios.get('https://api.spotify.com/v1/me', {
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        Authorization,
       },
     });
 

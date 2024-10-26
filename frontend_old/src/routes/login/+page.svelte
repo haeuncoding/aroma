@@ -1,9 +1,12 @@
-<script>
+<script lang="ts">
 	import '../../app.css';
 	import './login.css';
 
+	const backendURL = import.meta.env.VITE_DEV_BACKEND;
+
 	async function login() {
-		window.location.href = '/api/login';
+		let loginURL = `${backendURL}/auth/spotify`;
+		window.location.href = loginURL;
 	}
 </script>
 
