@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     /** @type {import('./$types').PageData} */
     import { onMount } from 'svelte';
     import { writable } from 'svelte/store'
@@ -6,8 +6,10 @@
     import { goto } from '$app/navigation';
 	let SpotifyAPI = 'https://api.spotify.com';
 	let userProfile = writable({});
+    let displayName;
+    let age;
     let accessToken = sessionStorage.getItem('access_token');
-
+    
 	async function logoutClick() {
         fetch(`http://localhost:3000/logout`)
             .then((response) => {
@@ -49,7 +51,10 @@
 		}
 	});
 
-    console.log(userProfile)
+    $: console.log('userProfile: ', $userProfile)
+    $: {display_name: displayName} = $userProfile;
+    
+
 </script>
 
 {#if !accessToken}
@@ -63,16 +68,16 @@
 
 {#if accessToken}
     <div class="">
-        <!-- {#if userProfile.display_name}
+        {#if display_name}
         <div>
             <h1 class="red-rose">What's {userProfile.display_name} listening to?</h1>
         </div>
         {/if}
-        {#if !userProfile.display_name}
+        {#if !display_name}
         <div>
             <h1 class="red-rose">What are they listening to?</h1>
         </div>
-        {/if} -->
+        {/if}
         <div>
             <h3 class="montserrat">
                 a summary of my newest songs on rotation.
