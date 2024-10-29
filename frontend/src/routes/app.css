@@ -221,8 +221,11 @@ h1, h2, h3, h4, h5, h6, h7, h8, h9, p, label {
     } */
 
 .session-button {
+    height: 3.5vh;
     padding-left: 2.5em;
     padding-right: 2.5em;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
     text-decoration: none;
     cursor: pointer;
     transition: 0.3s;
@@ -231,6 +234,11 @@ h1, h2, h3, h4, h5, h6, h7, h8, h9, p, label {
     background-color: rgb(16, 41, 84);
     border-radius: 4em;
     border: 1px solid #eaeaea4e;
+}
+
+.session-button > h4 {
+    font-size: 1em;
+    margin: 0;
 }
 
 .session-button:hover {

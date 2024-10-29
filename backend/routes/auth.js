@@ -5,6 +5,9 @@ import dotenv from 'dotenv';
 
 dotenv.config()
 const router = express.Router();
+
+console.log('Auth routes loaded')
+
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
@@ -30,7 +33,7 @@ router.get('/spotify', (req, res) => {
     const params = new URLSearchParams({
         response_type: 'code',
         client_id: CLIENT_ID,
-        scope: 'user-read-private user-read-email',
+        scope: 'user-read-private user-read-email user-library-read user-library-modify user-top-read user-read-recently-played user-follow-read user-follow-modify playlist-read-private playlist-read-collaborative playlist-modify-private',
         redirect_uri: REDIRECT_URI,
         state
     });

@@ -3,6 +3,7 @@ import express from 'express';
 import axios from 'axios';
 
 const router = express.Router();
+console.log('Spotify routes loaded')
 
 // Spotify Top Artists or Tracks route
 router.get('/top/:type', async (req, res) => {
