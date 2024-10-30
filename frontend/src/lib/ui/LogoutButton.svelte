@@ -16,5 +16,5 @@
 </script>
 
 <button class="session-button" on:click={logoutClick}>
-    <h4 class="montserrat-500">Logout</h4>
+    <h4 class="poppins-500">Logout</h4>
 </button>

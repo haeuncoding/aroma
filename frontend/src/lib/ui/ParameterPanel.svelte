@@ -19,14 +19,11 @@
                 'Authorization': `Bearer ${accessToken}`
             },
         });
-        console.log(response)
+
         if (!response.ok) {
             throw new Error('Failed to fetch user data');
         }
         data = await response.json();
-        console.log({
-            data
-        })
         dispatch('topData', data)
     }
 
@@ -41,12 +38,12 @@
         <div class="parameter-container">
             <label 
                 for="type" 
-                class="parameter-label montserrat">
+                class="parameter-label poppins">
                 <p class="parameter-label-text">
                     Type of Data:
                 </p>
                 <select 
-                    class="parameter-input montserrat" 
+                    class="parameter-input poppins" 
                     id="type" 
                     name="type"
                     bind:value={dataType}>
@@ -58,13 +55,13 @@
         <div class="parameter-container">
             <label 
                 for="time-range" 
-                class="parameter-label montserrat">
+                class="parameter-label poppins">
                 <p class="parameter-label-text">
                     Time Range:
                 </p>
                 <select 
                     id="time-range"
-                    class="parameter-input montserrat"
+                    class="parameter-input poppins"
                     bind:value={timeRange}>
                     <option value="short_term" selected>1 Month</option>
                     <option value="medium_term">6 Months</option>
@@ -75,13 +72,13 @@
         <div class="parameter-container">
             <label 
                 for="limit" 
-                class="parameter-label montserrat">
+                class="parameter-label poppins">
                 <p class="parameter-label-text">
                     {limit} {dataType}
                 </p>
                 <input 
                     type="range" 
-                    class="parameter-input montserrat"
+                    class="parameter-input poppins"
                     id="limit" 
                     placeholder="10"
                     min="10" 
@@ -91,7 +88,7 @@
             </label>
         </div>
         <div class="submit-button-container">
-            <button type="submit" class="montserrat submit-button">
+            <button type="submit" class="poppins submit-button">
                 let's find out
             </button>
         </div>
@@ -104,7 +101,7 @@
         border-radius: 15px;
         display: flex;
         flex-direction: column;
-        width: 13vw;
+        width: 17vw;
         text-align: center;
         transition: 0.25s;
         min-height: 38vh;
@@ -134,7 +131,7 @@
         padding: 0.75vh;
         border-radius: 5px;
         cursor: pointer;
-        width: 10vw;
+        width: 15vw;
         font-size: 0.85em;
     }
 
@@ -142,7 +139,7 @@
         padding: 0;
         -webkit-appearance: none;
         appearance: none; 
-        width: 10vw;
+        width: 15vw;
         cursor: pointer;
         outline: none;
         border-radius: 15px;

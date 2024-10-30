@@ -3,8 +3,8 @@ import express from 'express';
 import corsMiddleware from './middleware/cors.js';
 import authRoutes from './routes/auth.js';
 import userRoutes from './routes/user.js';
-import bodyParser from 'body-parser';
 import spotifyRoutes from './routes/spotify.js';
+import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv';
 

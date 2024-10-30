@@ -80,9 +80,9 @@
 
         <h2 class="red-rose">Error: {errorStatus} - {errorMsg}</h2>
         
-        <h2 class="montserrat error-text"> Please try logging in again.</h2>
+        <h2 class="poppins error-text"> Please try logging in again.</h2>
         <button class="session-button" on:click={goToLogin}>
-            <h3 class="montserrat">
+            <h3 class="poppins">
                 Back to Login
             </h3>
         </button>

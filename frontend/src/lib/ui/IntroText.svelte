@@ -13,12 +13,7 @@
         goto('/login');
 	}
     
-    onMount(() => {
-        displayName.set($userProfile.display_name);
-
-    })
-
-    $: console.log(displayName)
+    $: displayName.set($userProfile.display_name);
     
 
 </script>
@@ -28,7 +23,7 @@
 		<h2 class="red-rose">Please click the button below to go to the login screen.</h2>
 	</div>
 	<button class="session-button" on:click={goToLogin}>
-		<h4 class="montserrat">Go to Login</h4>
+		<h4 class="poppins">Go to Login</h4>
 	</button>
 {/if}
 
@@ -50,9 +45,9 @@
             <!-- <img src={userProfilePicSrc} id="user-pic"/> -->
         </div>
         <div>
-            <h5 class="montserrat">
+            <h5 class="poppins">
                 a summary of your newest songs on rotation.
-                <a href="/" class="montserrat"> click me </a>
+                <a href="/" class="poppins"> click me </a>
                 to listen along
             </h5>
         </div>

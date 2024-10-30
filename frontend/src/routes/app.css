@@ -12,136 +12,118 @@
     --charcoal: #252525;
     --dove-gray: #eaeaea;
     /* fonts */
-    --sans: [ 'Montserrat', 'sans-serif'];
+    --sans: [ 'poppins', 'sans-serif'];
     --serif: [ 'DM Serif Display', 'serif'];
     /* margin-top */
     /* margin */
 }
 
 /* text classes */
-.montserrat-100 {
-    font-family: 'Montserrat', sans-serif;
+.poppins-100 {
+    font-family: "Poppins", sans-serif;
     font-weight: 100;
-    font-optical-sizing: auto;
     font-style: normal;
 }
 
-.montserrat-100i {
-    font-family: 'Montserrat', sans-serif;
+.poppins-200 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.poppins-300 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.poppins {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.poppins-500 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.poppins-600 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.poppins-700 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.poppins-800 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.poppins-900 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.poppins-100i {
+    font-family: "Poppins", sans-serif;
     font-weight: 100;
-    font-optical-sizing: auto;
     font-style: italic;
 }
 
-.montserrat-200 {
-    font-family: 'Montserrat', sans-serif;
+.poppins-200i {
+    font-family: "Poppins", sans-serif;
     font-weight: 200;
-    font-optical-sizing: auto;
-    font-style: normal;
-}
-
-.montserrat-200i {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 200;
-    font-optical-sizing: auto;
     font-style: italic;
 }
 
-.montserrat-300 {
-    font-family: 'Montserrat', sans-serif;
+.poppins-300i {
+    font-family: "Poppins", sans-serif;
     font-weight: 300;
-    font-optical-sizing: auto;
-    font-style: normal;
-}
-
-.montserrat-300i {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    font-optical-sizing: auto;
     font-style: italic;
 }
 
-.montserrat {
-    font-family: 'Montserrat', sans-serif;
+.poppins-i {
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
-    font-optical-sizing: auto;
-    font-style: normal;
-}
-
-.montserrat-i {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-optical-sizing: auto;
     font-style: italic;
 }
 
-.montserrat-500 {
-    font-family: 'Montserrat', sans-serif;
+.poppins-500i {
+    font-family: "Poppins", sans-serif;
     font-weight: 500;
-    font-optical-sizing: auto;
-    font-style: normal;
-}
-
-.montserrat-500i {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-optical-sizing: auto;
     font-style: italic;
 }
 
-.montserrat-600 {
-    font-family: 'Montserrat', sans-serif;
+.poppins-600i {
+    font-family: "Poppins", sans-serif;
     font-weight: 600;
-    font-optical-sizing: auto;
-    font-style: normal;
-}
-
-.montserrat-600i {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-optical-sizing: auto;
     font-style: italic;
 }
 
-.montserrat-700 {
-    font-family: 'Montserrat', sans-serif;
+.poppins-700i {
+    font-family: "Poppins", sans-serif;
     font-weight: 700;
-    font-optical-sizing: auto;
-    font-style: normal;
-}
-
-.montserrat-700i {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-optical-sizing: auto;
     font-style: italic;
 }
 
-.montserrat-800 {
-    font-family: 'Montserrat', sans-serif;
+.poppins-800i {
+    font-family: "Poppins", sans-serif;
     font-weight: 800;
-    font-optical-sizing: auto;
-    font-style: normal;
-}
-
-.montserrat-800i {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-optical-sizing: auto;
     font-style: italic;
 }
 
-.montserrat-900 {
-    font-family: 'Montserrat', sans-serif;
+.poppins-900i {
+    font-family: "Poppins", sans-serif;
     font-weight: 900;
-    font-optical-sizing: auto;
-    font-style: normal;
-}
-
-.montserrat-900i {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-optical-sizing: auto;
     font-style: italic;
 }
 
@@ -256,8 +238,8 @@ h1, h2, h3, h4, h5, h6, h7, h8, h9, p, label {
 }
 
 .submit-button {
-    padding-left: 2.5em;
-    padding-right: 2.5em;
+    padding-left: 3em;
+    padding-right: 3em;
     text-decoration: none;
     cursor: pointer;
     transition: 0.3s;
@@ -266,7 +248,7 @@ h1, h2, h3, h4, h5, h6, h7, h8, h9, p, label {
     color: var(--dove-gray);
     background-color: rgb(16, 41, 84);
     border-radius: 4em;
-    border: 1px solid #eaeaea4e;
+    border: 1px solid #eaeaea12;
     padding: 1vh;
     margin-left: auto;
     margin-right: auto;
@@ -275,9 +257,9 @@ h1, h2, h3, h4, h5, h6, h7, h8, h9, p, label {
 .submit-button:hover {
     transition: 0.3s;
     color: var(--dove-gray);
-    background-color: rgb(10, 26, 54);
+    background-color: rgb(12, 24, 45);
     border-radius: 4.5em;
-    border: 1px solid rgb(10, 26, 54);
+    border: 1px solid rgb(12, 24, 45);
 }
 
 /* position classes */
