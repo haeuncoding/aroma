@@ -111,7 +111,6 @@
         border: 1px solid #eaeaea00;
         background-color: #2b2b2b;
         filter: drop-shadow(0rem 0.5rem black);
-        margin-top: 1em;
         transition: 0.25s;
     }
 

@@ -11,6 +11,8 @@
     import LoadingSpinner from '$lib/ui/LoadingSpinner.svelte';
     import { Track } from '$lib/types/Track.js';
     import TrackComponent from '$lib/objects/TrackComponent.svelte';
+    import { Artist } from '$lib/types/Artist.js';
+	import GenresArtistsPanel from '$lib/ui/GenresArtistsPanel.svelte';
 
     // User profile info:
     let accessToken = sessionStorage.getItem('access_token');
@@ -19,6 +21,8 @@
     // Track data:
     let topData = writable([]);
     let trackArr = writable([]);
+
+    // Artist data:
 
     async function getUser() {
         const response = await fetch('/api/user/profile', {
@@ -44,7 +48,7 @@
 
     function createTrackArr(tracks) {
         let arr = [];
-        for (let i = 0; i < tracks.length - 1; i++) {
+        for (let i = 0; i < tracks.length; i++) {
             let track = tracks[i]
             let name = track.name;
             let url = track.href;
@@ -68,7 +72,6 @@
 	});
 
     $: console.log({userProfile: $userProfile})
-    $: console.log({topData: $topData})
     $: console.log({trackArr: $trackArr})
 
 </script>
@@ -76,16 +79,36 @@
     <LoadingSpinner />
 {/if}
 {#if !$navigating && userProfile}
-    <IntroText {userProfile} />
-    <ParameterPanel on:topData={handleTopData} accessToken={accessToken} />
-    <LogoutButton />
+    <div class="top-div">
+        <IntroText {userProfile} />
+        <LogoutButton />
+    </div>
+    <div class="mid-div">
+        <ParameterPanel on:topData={handleTopData} accessToken={accessToken} />
+        <div class="chart-div">
+
+        </div>
+        <GenresArtistsPanel tracks={$trackArr} />
+    </div>
+
+
+
+
+    <div>
+        {#each $trackArr as track}
+            <TrackComponent {track}/>
+        {/each}
+    </div>
 {/if}
 
-<div>
-    {#each $topData as track}
-        <TrackComponent {track}/>
-    {/each}
-</div>
 <style lang="postcss">
-    
+    .top-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .mid-div {
+
+    }
 </style>
