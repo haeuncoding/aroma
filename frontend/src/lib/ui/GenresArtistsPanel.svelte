@@ -1,36 +1,22 @@
 <script lang="ts">
 	import type { Track } from "$lib/types/Track.js";
-	import { onMount } from "svelte";
+	import { afterUpdate, onMount } from "svelte";
     import { writable } from "svelte/store";
-    export let tracks;
+    import GenreListComponent from "./GenreListComponent.svelte";
+    export let genreObj;
 
-    const genreObj = writable({});
-
-    const populateGenreObj = (tracks) => {
-        tracks.map((track: Track) => {
-        let arr = track.genres;
-        for (let i = 0; i < arr.length; i++) {
-            let genre = arr[i];
-            if (!$genreObj[genre]) {
-                $genreObj[genre] = [track.artist]
-            }
-            if ($genreObj[genre]) {
-                if (!$genreObj[genre].includes(track.artist)) {
-                    $genreObj[genre].push(track.artist);
-                }
-            }
-        }
-        $genreObj = $genreObj
-    })};
-
-    onMount(() => {
-        populateGenreObj(tracks) 
-        console.log({$genreObj})
+    let genreObjKeys = Object.keys(genreObj);
+    console.log({
+        genreObj
     })
+    console.log({genreObjKeys})
+
 </script>
 
 <div id="genres-artists">
-    
+    {#each genreObjKeys as genre}
+        <GenreListComponent genre={genre} artists={genreObj[genre]} />
+    {/each}
 </div>
 
 <style lang="postcss">

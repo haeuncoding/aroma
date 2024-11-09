@@ -32,12 +32,12 @@
         <div>
             {#if displayName}
                 <div>
-                    <h1 class="red-rose">What's <strong><em>{$displayName}</em></strong> listening to?</h1>
+                    <h1 class="red-rose all-caps">What's <strong>{$displayName}</strong> listening to?</h1>
                 </div>
             {/if}
                 {#if !displayName}
                 <div>
-                    <h1 class="red-rose">What have you been listening to?</h1>
+                    <h1 class="red-rose all-caps">What have you been listening to?</h1>
                 </div>
             {/if}
         </div>
