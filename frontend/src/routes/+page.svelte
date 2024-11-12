@@ -1,19 +1,27 @@
 <script lang="ts">
-	import LogoutButton from './../lib/ui/LogoutButton.svelte';
-    /** @type {import('./$types').PageData} */
+    // Svelte
     import { onMount } from 'svelte';
-    import { writable, derived } from 'svelte/store'
+    import { writable } from 'svelte/store'
     import { navigating } from '$app/stores';
 	import './app.css'
-    import { goto } from '$app/navigation';
+
+    // Panels
     import IntroText from '$lib/ui/IntroText.svelte';
     import ParameterPanel from '$lib/ui/ParameterPanel.svelte';
-    import LoadingSpinner from '$lib/ui/LoadingSpinner.svelte';
-    import { Track } from '$lib/types/Track.js';
-    import TrackComponent from '$lib/objects/TrackComponent.svelte';
-    import { Artist } from '$lib/types/Artist.js';
 	import GenresArtistsPanel from '$lib/ui/GenresArtistsPanel.svelte';
+	
+    // UI
+    import LogoutButton from './../lib/ui/LogoutButton.svelte';
+    import LoadingSpinner from '$lib/ui/LoadingSpinner.svelte';
+    import CalculatingSpinner from '$lib/ui/CalculatingSpinner.svelte';
+	import Chart from '$lib/ui/Chart.svelte';
+    
+    // Types
+    import { Track } from '$lib/types/Track.js';
 
+    // Util Functions
+    import { createGenreObj, convertToChordDataArtists } from '$lib/util/utilFunctions.js';
+    
     // User profile info:
     let accessToken = sessionStorage.getItem('access_token');
 	let userProfile = writable({});
@@ -22,12 +30,15 @@
     let topData = writable([]);
     let trackArr = writable([]);
 
-    // Artist data:
-
-
     // Genre data:
     let genreObj = writable({});
     let genreObjKeys: String[];
+
+    // Set loading boolean:
+    let loading = writable(false);
+
+    // Set chart data
+    let data = writable({})
 
     async function getUser() {
         const response = await fetch('/api/user/profile', {
@@ -46,7 +57,7 @@
 
     const handleTopData = async (event: Event) => {
         let data = event.detail;
-        console.log('Top Data: ', data)
+        loading.set(true);
         topData.set(data.items);
         createTrackArr($topData);
     }
@@ -60,7 +71,6 @@
             let artist = track.artists[0].name;
             let artistId = track.artists[0].id;
             let trackObj = await createTrack(name, url, artist, artistId);
-            // trackObj.getArtist();
             arr.push(trackObj)
         }
         trackArr.set(arr);
@@ -91,45 +101,27 @@
         return res;
     }
 
-
     export const populateGenreObj = (tracks: Track[]) => {
-        let obj = {};
-        tracks.forEach((track: Track) => {
-            let arr = track.genres;
-            console.log({
-                track, 
-                genres: track.genres,
-                name: track.name
-            })
-            for (let i = 0; i < arr.length; i++) {
-                let genre = arr[i];
-                if (!obj[genre]) {
-                    obj[genre] = [track.artist]
-                }
-                if (obj[genre]) {
-                    if (!obj[genre].includes(track.artist)) {
-                        obj[genre].push(track.artist);
-                    }
-                }
-            }
-        })
+        let obj = createGenreObj(tracks);
         console.log(obj)
         genreObj.set(obj);
+        let res = convertToChordDataArtists($genreObj);
+        console.log({res})
+        data.set(res)
+        loading.set(false);
     };
 
 	// On mount, check for an access token in localStorage
 	onMount(async () => {
 		if (accessToken !== null) {
             // Fetch the user's Spotify profile using the access token
-            // const userData = await getUser();
             userProfile.set(await getUser());
             userProfile = userProfile;
 		}
 	});
 
-    $: console.log({userProfile: $userProfile})
-    $: console.log({trackArr: $trackArr})
-    $: console.log({genreObj: $genreObj})
+    // $: console.log({genreObj: $genreObj})
+
     $: if ($trackArr) {
         console.log($trackArr)
         populateGenreObj($trackArr);
@@ -140,29 +132,58 @@
     <LoadingSpinner />
 {/if}
 {#if !$navigating && userProfile}
-    <div class="top-div">
-        <IntroText {userProfile} />
-        <LogoutButton />
-    </div>
-    <div class="mid-div">
-        <ParameterPanel on:topData={handleTopData} accessToken={accessToken} />
-        <div class="chart-div">
-
+    <div class="main-container">
+        <div class="top-div">
+            <IntroText {userProfile} />
+            <LogoutButton />
         </div>
-        <GenresArtistsPanel genreObj={$genreObj} />
-    </div>
-
-
-
-
-    <div>
-        {#each $trackArr as track}
-            <TrackComponent {track}/>
-        {/each}
+        {#if $loading === false}
+        <div class="mid-div">
+            <ParameterPanel on:topData={handleTopData} accessToken={accessToken} />
+            <Chart data={$data} />
+            <GenresArtistsPanel bind:genreObj={$genreObj} />
+        </div>
+        {:else if ($loading === true)}
+            <div class="mid-div-calculating">
+                <CalculatingSpinner />
+            </div>
+        {/if}
+        <div class="bottom-div">
+            <p class="poppins">
+                Designed by 
+                <a
+                    class="poppins website-link"
+                    href="https://liucatherine.com/" 
+                    target="_blank"
+                    >
+                        Catherine Liu
+                </a> 
+                and Developed by 
+                <a
+                    class="poppins website-link"
+                    href="https://haeuncreative.com/" 
+                    target="_blank"
+                    >
+                        Nathan Kwon
+                </a>
+                </p>
+                <p>
+                    <a href="/about" class="poppins nav-link">
+                        About
+                    </a>
+                </p>
+            
+            <!-- <div class="deco-line"/> -->
+        </div>
     </div>
 {/if}
 
-<style lang="postcss">
+<style>
+    .main-container {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+
     .top-div {
         display: flex;
         flex-direction: row;
@@ -170,6 +191,38 @@
     }
 
     .mid-div {
+        display: flex;
+        flex-direction: row;
+    }
 
+    .mid-div-calculating {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .bottom-div {
+        display: flex;
+        flex-direction: row;
+        bottom: 2vh;
+        font-size: 0.75em;
+        justify-content: space-between;
+    }
+
+    .website-link {
+        /* text-decoration: none; */
+        color: var(--dove-gray);
+        transition: 0.2s;
+    }
+
+    .website-link:hover {
+        text-decoration: none;
+        color: #a7a7a7;
+        transition: 0.2s;
+    }
+
+    .deco-line {
+        width: 75vw;
+        border-bottom: 1px solid #eaeaea;
+        bottom: 1vh;
     }
 </style>

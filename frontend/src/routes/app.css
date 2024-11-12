@@ -166,6 +166,10 @@
     font-size: 5em;
 }
 
+.subtitle-text {
+    font-size: 3em;
+}
+
 .italics {
     font-style: italic;
 }
@@ -176,6 +180,14 @@
 
 .all-caps {
     text-transform: uppercase;
+}
+
+.xs-font {
+    font-size: 0.55em;
+}
+
+.small-font {
+    font-size: 0.75em;
 }
 
 /* component classes */
@@ -275,6 +287,18 @@ h1, h2, h3, h4, h5, h6, h7, h8, h9, p, label {
 
 .text-center {
     text-align: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--dove-gray);
+    transition: 0.2s;
+}
+
+.nav-link:hover {
+    text-decoration: none;
+    color: #a7a7a7;
+    transition: 0.2s;
 }
 
 /* 3XS devices (phones, 320px and down) */
