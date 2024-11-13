@@ -105,7 +105,10 @@
         text-align: center;
         transition: 0.25s;
         min-height: 38vh;
-        height: 38vh;
+        height: min-content;
+        padding-bottom: 3vh;
+        padding-left: 2vw;
+        padding-right: 2vw;
     }
 
     div#parameters:hover {

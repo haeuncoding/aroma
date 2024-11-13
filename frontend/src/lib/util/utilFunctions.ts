@@ -2,6 +2,9 @@ import type { Track } from "$lib/types/Track.js";
 import type { ChordInputNode } from "$lib/types/ChordInputNode.js";
 import type { ChordInputLink } from "$lib/types/ChordInputLink.js";
 import type { ChordData } from "$lib/types/ChordData.js";
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
+
 
 const COLOR_LIST = [
     "#BEAB6E",
@@ -26,6 +29,19 @@ export const getRandomInt = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+export const createObjects = (tracks: Track[]) => {
+    const returnObjs = {
+        "genreObj": {},
+        "artistObj": {},
+    };
+
+    const genreObj = createGenreObj(tracks);
+    const artistObj = createArtistObj(tracks);
+    returnObjs.genreObj = genreObj;
+    returnObjs.artistObj = artistObj;
+    return returnObjs;
+}
+
 export const createGenreObj = (tracks: Track[]) => {
     let obj = {};
         tracks.forEach((track: Track) => {
@@ -35,22 +51,55 @@ export const createGenreObj = (tracks: Track[]) => {
                 if (!obj[genre]) {
                     // obj[genre] = [`${track.name} - ${track.artist}`]
                     obj[genre] = {
+                        'tracks': [],
                         'artists': [],
                         'color': '',
                     }
+                    obj[genre]['tracks'] = [`${track.name} - ${track.artist}`]
                     obj[genre]['artists'] = [`${track.artist}`]
                 }
                 if (obj[genre]) {
-                    // if (!obj[genre].includes(`${track.name} - ${track.artist}`)) {
-                    //     obj[genre].push(`${track.name} - ${track.artist}`);
-                    // }
                     if (!obj[genre]['artists'].includes(`${track.artist}`)) {
                         obj[genre]['artists'].push(`${track.artist}`);
+                    }
+                    if (!obj[genre]['tracks'].includes(`${track.name} - ${track.artist}`)) {
+                        obj[genre]['tracks'].push(`${track.name} - ${track.artist}`);
                     }
                 }
                 if (obj[genre]['color'] === '') {
                     obj[genre]['color'] = pickRandomColor();
                 }
+            }
+        })
+    return obj;
+};
+
+export const createArtistObj = (tracks: Track[]) => {
+    let obj = {};
+    tracks.forEach((track: Track) => {
+        let artist = track.artist;
+
+            if (!obj[artist]) {
+                // obj[genre] = [`${track.name} - ${track.artist}`]
+                obj[artist] = {
+                    'tracks': [],
+                    'genres': [],
+                    'color': '',
+                }
+                obj[artist]['tracks'] = [`${track.name}`]
+                if (track.genres.length > 0) {
+                    obj[artist]['genres'] = track.genres
+                } else {
+                    obj[artist]['genres'] = ['no genre given']
+                }
+            }
+            if (obj[artist]) {
+                if (!obj[artist]['tracks'].includes(`${track.name}`)) {
+                    obj[artist]['tracks'].push(`${track.name}`);
+                }
+            }
+            if (obj[artist]['color'] === '') {
+                obj[artist]['color'] = pickRandomColor();
             }
         })
     return obj;
@@ -95,4 +144,11 @@ export const convertToChordDataArtists = (genreObj: any) => {
     }
 
     return data;
+};
+
+export const createPNG = (node: any) => {
+    htmlToImage.toPng(node)
+    .then(function (dataUrl) {
+        download(dataUrl, 'my-node.png');
+    });
 };

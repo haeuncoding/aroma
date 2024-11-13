@@ -14,8 +14,10 @@
 
 <style lang="postcss">
     .loading-div {
+        margin-top: 20vh;
         text-align: center;
         align-items: center;
+        margin-bottom: 10vh;
     }
 
     .loading-text-div {

@@ -1,6 +1,8 @@
 <script lang="ts">
 	import '../app.css';
 	import './login.css';
+    import { slide } from 'svelte/transition';
+    import { elasticInOut } from 'svelte/easing';
 
 	const backendURL = import.meta.env.VITE_DEV_BACKEND;
 
@@ -10,7 +12,7 @@
 	}
 </script>
 
-<div class="login-div mlr-auto text-center">
+<div class="login-div mlr-auto text-center" transition:slide={{ duration: 500, easing: elasticInOut }}>
 	<h1 class="title-text red-rose">Let's get started.</h1>
 
 	<button class="login-button" on:click={login}>

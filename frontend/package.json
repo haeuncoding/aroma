@@ -56,6 +56,8 @@
 	},
 	"dependencies": {
 		"@unovis/svelte": "^1.4.4",
-		"@unovis/ts": "^1.4.4"
+		"@unovis/ts": "^1.4.4",
+		"downloadjs": "^1.4.7",
+		"html-to-image": "^1.11.11"
 	}
 }
