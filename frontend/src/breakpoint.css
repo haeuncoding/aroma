@@ -1,0 +1,23 @@
+    /* 3XS devices (phones, 320px and down) */
+    @media only screen and (min-width: 320px) {}
+
+    /* XXS devices (phones, between 321px and 480px) */
+    @media only screen and (min-width: 480px) {}
+
+    /* XS devices (phones, between 481px and 600px) */
+    @media only screen and (min-width: 600px) {}
+
+    /* Small devices (portrait tablets and large phones, between 601px and 768) */
+    @media only screen and (min-width: 768px) {}
+
+    /* Medium devices (landscape tablets, between 769px and 1024px) */
+    @media only screen and (min-width: 1024px) {}
+
+    /* Large devices (laptops/desktops, between 1025px and 1280px) */
+    @media only screen and (min-width: 1280px) {}
+
+    /* Extra large devices (large laptops and desktops, between 1281px and 1440px) */
+    @media only screen and (min-width: 1440px) {}
+
+    /* XXL devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1440px) {}

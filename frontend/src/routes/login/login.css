@@ -1,59 +1,331 @@
-.login-button,
-.login-button>* {
-    text-decoration: none;
-    margin-top: 2vh;
-}
+/* 3XS devices (phones, 320px and down) */
+@media only screen and (max-width: 320px) {
+    .title-text {
+        font-size: 2em;
+    }
 
-.login-div {
-    margin-top: 30vh
-}
+    .login-button {
+        text-decoration: none;
+        margin-top: 2vh;
+    }
 
-.login-button {
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 1.5em;
-    color: var(--dove-gray);
-    background-color: rgb(16, 41, 84);
-    border-radius: 4em;
-    border: 1px solid #eaeaea4e;
-}
+    .login-div {
+        margin-top: 38vh;
+        text-align: center;
+    }
 
-.login-button:hover {
-    transition: 0.3s;
-    color: var(--dove-gray);
-    background-color: rgb(10, 26, 54);
-    border-radius: 4.5em;
-    border: 1px solid rgb(10, 26, 54);
-    margin-top: 1em;
-    filter: drop-shadow(0rem 1rem black);
+    .login-button {
+        font-size: 0.25em;
+        height: 4vh;
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+        /* padding-top: 0.25em;
+        padding-bottom: 0.25em; */
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 1.5em;
+        color: var(--dove-gray);
+        background-color: rgb(16, 41, 84);
+        border-radius: 4em;
+        border: 1px solid #eaeaea4e;
+    }
+
+    .login-button:hover {
+        transition: 0.3s;
+        color: var(--dove-gray);
+        background-color: rgb(10, 26, 54);
+        border-radius: 4.5em;
+        border: 1px solid rgb(10, 26, 54);
+        margin-top: 1em;
+        filter: drop-shadow(0rem 1rem black);
+    }
 }
 
 /* 3XS devices (phones, 320px and down) */
-@media only screen and (max-width: 320px) {}
+@media only screen and (min-width: 320px) {
+    .title-text {
+        font-size: 3em;
+    }
 
+    .login-button {
+        text-decoration: none;
+        /* margin-top: 2vh; */
+    }
 
-/* XXS devices (phones, between 321px and 480px) */
-@media only screen and (max-width: 480px) {}
+    .login-div {
+        margin-top: 38vh;
+    }
+
+    .login-button {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+        padding-top: 0.25em;
+        padding-bottom: 0.25em;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 0.5em;
+        color: var(--dove-gray);
+        background-color: rgb(16, 41, 84);
+        border-radius: 4em;
+        border: 1px solid #eaeaea4e;
+    }
+
+    .login-button:hover {
+        transition: 0.3s;
+        color: var(--dove-gray);
+        background-color: rgb(10, 26, 54);
+        border-radius: 4.5em;
+        border: 1px solid rgb(10, 26, 54);
+        margin-top: 1em;
+        filter: drop-shadow(0rem 1rem black);
+    }
+}
 
 /* XS devices (phones, between 481px and 600px) */
-@media only screen and (max-width: 600px) {}
+@media only screen and (min-width: 600px) {
+    .title-text {
+        font-size: 4em;
+    }
+
+    .login-button {
+        text-decoration: none;
+        margin-top: 2vh;
+    }
+
+    .login-div {
+        margin-top: 35vh;
+        margin-bottom: auto;
+    }
+
+    .login-button {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 1.5em;
+        color: var(--dove-gray);
+        background-color: rgb(16, 41, 84);
+        border-radius: 4em;
+        border: 1px solid #eaeaea4e;
+    }
+
+    .login-button:hover {
+        transition: 0.3s;
+        color: var(--dove-gray);
+        background-color: rgb(10, 26, 54);
+        border-radius: 4.5em;
+        border: 1px solid rgb(10, 26, 54);
+        margin-top: 1em;
+        filter: drop-shadow(0rem 1rem black);
+    }
+}
 
 
 /* Small devices (portrait tablets and large phones, between 601px and 768px) */
-@media only screen and (max-width: 768px) {}
+@media only screen and (min-width: 768px) {
+    .title-text {
+        font-size: 5em;
+    }
+
+    .login-button {
+        text-decoration: none;
+        margin-top: 2vh;
+    }
+
+    .login-div {
+        margin-top: 35vh;
+        margin-bottom: auto;
+    }
+
+    .login-button {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 1.5em;
+        color: var(--dove-gray);
+        background-color: rgb(16, 41, 84);
+        border-radius: 4em;
+        border: 1px solid #eaeaea4e;
+    }
+
+    .login-button:hover {
+        transition: 0.3s;
+        color: var(--dove-gray);
+        background-color: rgb(10, 26, 54);
+        border-radius: 4.5em;
+        border: 1px solid rgb(10, 26, 54);
+        margin-top: 1em;
+        filter: drop-shadow(0rem 1rem black);
+    }
+}
 
 /* Medium devices (landscape tablets, between 769px and 1024px) */
-@media only screen and (max-width: 1024px) {}
+@media only screen and (min-width: 1024px) {
+    .title-text {
+        font-size: 5em;
+    }
+
+    .login-button,
+    .login-button>* {
+        text-decoration: none;
+        margin-top: 2vh;
+    }
+
+    .login-div {
+        margin-top: 35vh;
+        margin-bottom: auto;
+    }
+
+    .login-button {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 1.5em;
+        color: var(--dove-gray);
+        background-color: rgb(16, 41, 84);
+        border-radius: 4em;
+        border: 1px solid #eaeaea4e;
+    }
+
+    .login-button:hover {
+        transition: 0.3s;
+        color: var(--dove-gray);
+        background-color: rgb(10, 26, 54);
+        border-radius: 4.5em;
+        border: 1px solid rgb(10, 26, 54);
+        margin-top: 1em;
+        filter: drop-shadow(0rem 1rem black);
+    }
+}
 
 /* Large devices (laptops/desktops, between 1025px and 1280px) */
-@media only screen and (max-width: 1280px) {}
+@media only screen and (min-width: 1280px) {
+    .title-text {
+        font-size: 3em;
+    }
+
+    .login-button,
+    .login-button>* {
+        text-decoration: none;
+        margin-top: 1vh;
+    }
+
+    .login-div {
+        margin-top: 25vw;
+        margin-bottom:auto;
+    }
+
+    .login-button {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 1.5em;
+        color: var(--dove-gray);
+        background-color: rgb(16, 41, 84);
+        border-radius: 4em;
+        border: 1px solid #eaeaea4e;
+        font-size: 0.5em;
+    }
+
+    .login-button:hover {
+        transition: 0.3s;
+        color: var(--dove-gray);
+        background-color: rgb(10, 26, 54);
+        border-radius: 4.5em;
+        border: 1px solid rgb(10, 26, 54);
+        margin-top: 1em;
+        filter: drop-shadow(0rem 1rem black);
+    }
+}
 
 /* Extra large devices (large laptops and desktops, between 1281px and 1440px) */
-@media only screen and (max-width: 1440px) {}
+@media only screen and (min-width: 1440px) {
+    .login-button {
+        text-decoration: none;
+        margin-top: 2vh;
+    }
+
+    .login-div {
+        margin-top: 40vh;
+        margin-bottom: auto;
+    }
+
+    .login-button {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 1em;
+        color: var(--dove-gray);
+        background-color: rgb(16, 41, 84);
+        border-radius: 4em;
+        border: 1px solid #eaeaea4e;
+    }
+
+    .login-button:hover {
+        transition: 0.3s;
+        color: var(--dove-gray);
+        background-color: rgb(10, 26, 54);
+        border-radius: 4.5em;
+        border: 1px solid rgb(10, 26, 54);
+        margin-top: 1em;
+        filter: drop-shadow(0rem 1rem black);
+    }
+}
 
 /* XXL devices (large laptops and desktops, 1440px and up) */
-@media only screen and (min-width: 1440px) {}
+@media only screen and (min-width: 1440px) {
+    .title-text {
+        font-size: 5em;
+    }
+
+    .login-button,
+    .login-button>* {
+        text-decoration: none;
+        margin-top: 2vh;
+    }
+
+    .login-div {
+        margin-top: 25vw;
+        margin-bottom: auto;
+    }
+
+    .login-button {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 1.5em;
+        color: var(--dove-gray);
+        background-color: rgb(16, 41, 84);
+        border-radius: 4em;
+        border: 1px solid #eaeaea4e;
+    }
+
+    .login-button:hover {
+        transition: 0.3s;
+        color: var(--dove-gray);
+        background-color: rgb(10, 26, 54);
+        border-radius: 4.5em;
+        border: 1px solid rgb(10, 26, 54);
+        margin-top: 1em;
+        filter: drop-shadow(0rem 1rem black);
+    }
+}

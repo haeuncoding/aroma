@@ -20,7 +20,26 @@ router.get('/artists', async (req, res) => {
 
         res.json(response.data);
     } catch (error) {
-        res.status(error.status).json({ error: 'Failed to fetch top items' });
-    }});
+        res.status(error.status).json({ error: 'Failed to fetch artists' });
+    }
+});
+
+router.post('/playlists', async (req, res) => {
+    const { userId } = req.query;
+    const { authorization } = req.headers;
+
+    try {
+        const response = await axios.get(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+        headers: { 
+            Authorization: authorization,
+            'Content-Type': 'application/json'
+        }
+        });
+
+        res.json(response.data);
+    } catch (error) {
+        res.status(error.status).json({ error: 'Failed to create playlist.' });
+    }
+})
 
 export default router;

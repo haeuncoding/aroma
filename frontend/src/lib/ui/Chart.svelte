@@ -2,34 +2,156 @@
     import { VisChordDiagram, VisSingleContainer } from '@unovis/svelte';
     import type { ChordInputNode } from '$lib/types/ChordInputNode.js';
     import type { ChordInputLink } from '$lib/types/ChordInputLink.js';
-
+    import { writable } from 'svelte/store';
     export let data;
     console.log({data})
+
     const nodeLabel = (d: ChordInputNode) => `${d.nodeLabel}`;
     const nodeColor = (d: ChordInputNode) => `${d.nodeColor}`;
-    const linkColor = (d: ChordInputLink) => `${d.linkColor}`
+    const linkColor = (d: ChordInputLink) => `${d.linkColor}`;
 
-    const padding = {
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
+    const width = writable(screen.width);
+    console.log("width", screen.width);
+
+    const padding = writable({});
+    const margin = writable({});
+    
+    const createPaddingMargin = (width: number) => {
+        if (width <= 320) {
+            padding.set({
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+            });
+
+            margin.set({
+                top: -120,
+                bottom: 0,
+                left: -200,
+                right: -100,
+            });
+        };
+        if (width >= 320 && width <= 479) {
+            padding.set({
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+            });
+
+            margin.set({
+                top: -120,
+                bottom: 0,
+                left: -200,
+                right: -100,
+            });
+        };
+        if (width >= 480 && width <= 599) {
+            padding.set({
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+            });
+
+            margin.set({
+                top: -120,
+                bottom: 0,
+                left: -200,
+                right: -100,
+            });
+        };
+        if (width >= 600 && width <= 767) {
+            padding.set({
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+            });
+
+            margin.set({
+                top: -120,
+                bottom: 0,
+                left: -200,
+                right: -100,
+            });
+        };
+        if (width >= 768 && width <= 1023) {
+            padding.set({
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+            });
+
+            margin.set({
+                top: -100,
+                bottom: 0,
+                left: -200,
+                right: -50,
+            });
+        };
+        if (width >= 1024 && width <= 1279) {
+            padding.set({
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+            });
+
+            margin.set({
+                top: -120,
+                bottom: 0,
+                left: -200,
+                right: -100,
+            });
+        };
+        if (width >= 1280 && width <= 1439) {
+            padding.set({
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+            });
+
+            margin.set({
+                top: -120,
+                bottom: 0,
+                left: -200,
+                right: -100,
+            });
+        };
+        if (width >= 1440) {
+            padding.set({
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+            });
+
+            margin.set({
+                top: -120,
+                bottom: 0,
+                left: -200,
+                right: -100,
+            });
+        };
+
     }
 
-    const margin = {
-        top: -120,
-        bottom: 0,
-        left: -200,
-        right: -100,
-    }
+    width.subscribe((value) => {
+        createPaddingMargin(value)
+        console.log("width", screen.width);
+    })
 </script>
 
 <div class="chart-div poppins xs-font">
     <VisSingleContainer 
         width="50vw" 
         height="50vw" 
-        {padding}
-        {margin}
+        padding={$padding}
+        margin={$margin}
         {data}>
         <VisChordDiagram 
             {nodeLabel} 

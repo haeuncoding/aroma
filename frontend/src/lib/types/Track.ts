@@ -1,5 +1,3 @@
-let accessToken = sessionStorage.getItem("access_token")
-
 export class Track {
     name: string;
     url: string;
