@@ -10,21 +10,16 @@
     const nodeColor = (d: ChordInputNode) => `${d.nodeColor}`;
     const linkColor = (d: ChordInputLink) => `${d.linkColor}`;
 
-    const width = writable(screen.width);
+    const screenWidth = writable(screen.width);
     console.log("width", screen.width);
 
     const padding = writable({});
     const margin = writable({});
+    const width = writable();
+    const height = writable();
     
-    const createPaddingMargin = (width: number) => {
-        if (width <= 320) {
-            padding.set({
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-            });
-
+    const createPaddingMargin = (screenWidth: number) => {
+        if (screenWidth <= 320) {
             margin.set({
                 top: -120,
                 bottom: 0,
@@ -32,14 +27,23 @@
                 right: -100,
             });
         };
-        if (width >= 320 && width <= 479) {
+        if (screenWidth >= 320 && screenWidth <= 479) {
+            width.set("125vw");
+            height.set("125vw");
+            margin.set({
+                top: 0,
+                bottom: 0,
+                left: -200,
+                right: 0,
+            });
             padding.set({
                 top: 0,
                 bottom: 0,
                 left: 0,
                 right: 0,
             });
-
+        };
+        if (screenWidth >= 480 && screenWidth <= 599) {
             margin.set({
                 top: -120,
                 bottom: 0,
@@ -47,14 +51,7 @@
                 right: -100,
             });
         };
-        if (width >= 480 && width <= 599) {
-            padding.set({
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-            });
-
+        if (screenWidth >= 600 && screenWidth <= 767) {
             margin.set({
                 top: -120,
                 bottom: 0,
@@ -62,29 +59,7 @@
                 right: -100,
             });
         };
-        if (width >= 600 && width <= 767) {
-            padding.set({
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-            });
-
-            margin.set({
-                top: -120,
-                bottom: 0,
-                left: -200,
-                right: -100,
-            });
-        };
-        if (width >= 768 && width <= 1023) {
-            padding.set({
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-            });
-
+        if (screenWidth >= 768 && screenWidth <= 1023) {
             margin.set({
                 top: -100,
                 bottom: 0,
@@ -92,14 +67,7 @@
                 right: -50,
             });
         };
-        if (width >= 1024 && width <= 1279) {
-            padding.set({
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-            });
-
+        if (screenWidth >= 1024 && screenWidth <= 1279) {
             margin.set({
                 top: -120,
                 bottom: 0,
@@ -107,14 +75,7 @@
                 right: -100,
             });
         };
-        if (width >= 1280 && width <= 1439) {
-            padding.set({
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-            });
-
+        if (screenWidth >= 1280 && screenWidth <= 1439) {
             margin.set({
                 top: -120,
                 bottom: 0,
@@ -122,14 +83,9 @@
                 right: -100,
             });
         };
-        if (width >= 1440) {
-            padding.set({
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-            });
-
+        if (screenWidth >= 1440) {
+            width.set("50vw");
+            height.set("30vw")
             margin.set({
                 top: -120,
                 bottom: 0,
@@ -140,7 +96,7 @@
 
     }
 
-    width.subscribe((value) => {
+    screenWidth.subscribe((value) => {
         createPaddingMargin(value)
         console.log("width", screen.width);
     })
@@ -148,8 +104,8 @@
 
 <div class="chart-div poppins xs-font">
     <VisSingleContainer 
-        width="50vw" 
-        height="50vw" 
+        width={$width} 
+        height={$height} 
         padding={$padding}
         margin={$margin}
         {data}>
@@ -178,7 +134,16 @@
     @media only screen and (max-width: 320px) {}
 
     /* XXS devices (phones, between 321px and 480px) */
-    @media only screen and (max-width: 480px) {}
+    @media only screen and (max-width: 480px) {
+        .chart-div {
+            width: 100vw;
+            padding-left: 3vw;
+            padding-right: 3vw;
+            color: white;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+    }
 
     /* XS devices (phones, between 481px and 600px) */
     @media only screen and (max-width: 600px) {}
