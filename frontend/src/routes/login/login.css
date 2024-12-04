@@ -297,11 +297,11 @@
     .login-button,
     .login-button>* {
         text-decoration: none;
-        margin-top: 2vh;
+        margin-top: 1vh;
     }
 
     .login-div {
-        margin-top: 25vw;
+        margin-top: 17vw;
         margin-bottom: auto;
     }
 

@@ -42,6 +42,65 @@ export const createObjects = (tracks: Track[]) => {
     return returnObjs;
 }
 
+export const genreExistsInArray = (array, element: string) => {
+    let ele = array.find((ele) =>  ele.genre === element);
+    if (!ele) return;
+    return ele;
+}
+
+export const eleExistsInArray = (array: string[], element: string) => {
+        let ele = array.find((ele: string) =>  ele === element);
+    if (!ele) return;
+    return ele;
+}
+
+export const createGenreArr = (tracks: Track[]) => {
+    let finalArr: object[] = [];
+        tracks.forEach((track: Track) => {
+            let genreArr = track.genres;
+            if (genreArr.length > 0) {
+                for (let i = 0; i < genreArr.length; i++) {
+                    let genreObj = {
+                        genre: '',
+                        artists: [],
+                        tracks: [],
+                    }
+                    let genre = genreArr[i];
+                    let foundObj = genreExistsInArray(finalArr, genre)
+                    if (foundObj) {
+                        if (!eleExistsInArray(foundObj.artists, track.artist)) foundObj.artists.push(track.artist);
+                        foundObj.tracks.push(track.name);
+                    }
+                    if (!foundObj) {
+                        genreObj.genre = genre;
+                        genreObj.artists.push(track.artist);
+                        genreObj.tracks.push(track.name);
+                        finalArr.push(genreObj);
+                    };
+                }
+            } else {
+                    let genreObj = {
+                        genre: '',
+                        artists: [],
+                        tracks: [],
+                    }
+                    let genre = "no genre given";
+                    let foundObj = genreExistsInArray(finalArr, genre)
+                    if (foundObj) {
+                        if (!eleExistsInArray(foundObj.artists, track.artist)) foundObj.artists.push(track.artist);
+                        foundObj.tracks.push(track.name);
+                    }
+                    if (!foundObj) {
+                        genreObj.genre = genre;
+                        genreObj.artists.push(track.artist);
+                        genreObj.tracks.push(track.name);
+                        finalArr.push(genreObj);
+                    };
+            }
+        })
+    return finalArr;
+};
+
 export const createGenreObj = (tracks: Track[]) => {
     let obj = {};
         tracks.forEach((track: Track) => {

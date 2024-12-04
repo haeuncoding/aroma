@@ -23,7 +23,7 @@
     import { Track } from '$lib/types/Track.js';
 
     // Util Functions
-    import { createGenreObj, convertToChordDataArtists, createObjects } from '$lib/util/utilFunctions.js';
+    import { createGenreObj, convertToChordDataArtists, createObjects, createGenreArr } from '$lib/util/utilFunctions.js';
 	import ReverseGenresArtistsPanel from '$lib/ui/ReverseGenresArtistsPanel.svelte';
     
     // User profile info:
@@ -140,10 +140,18 @@
         console.log(obj)
         genreObj.set(obj);
         let res = convertToChordDataArtists($genreObj);
-        console.log({res})
-        data.set(res)
         loading.set(false);
     };
+
+    export const populateChartData = (tracks: Track[]) => {
+        let arr = createGenreArr(tracks);
+        console.log({
+            arr,
+            msg: 'populate chart data'
+        })
+        data.set(arr);
+        loading.set(false);
+    }
 
 	// On mount, check for an access token in localStorage
 	onMount(async () => {
@@ -160,6 +168,7 @@
         console.log($trackArr)
         populateGenreObj($trackArr);
         populateObjs($trackArr);
+        populateChartData($trackArr);
     }
 
 </script>
@@ -167,23 +176,23 @@
     <LoadingSpinner />
 {:else if !$navigating && userProfile}
 
-    <div class="main-container">
-        <div class="top-div">
+    <div class="tw-p-6">
+        <div class="tw-relative tw-top-0 tw-flex tw-flex-row tw-justify-between">
             <IntroText {userProfile} />
             <LogoutButton />
         </div>
-        <div class="mid-div" transition:slide={{ duration: 500, easing: circInOut }}>
+        <div class="tw-relative tw-top-0 tw-flex tw-flex-row tw-justify-between" transition:slide={{ duration: 500, easing: circInOut }}>
             {#if $loading === false}
-                <div class="mid-left-div">
-                    <div class="mid-left-upper-div">
-                        <ParameterPanel on:topData={handleTopData} accessToken={accessToken} />
-                        <Chart data={$data} />
-                    </div>
+                <div class="tw-flex-row">
+                    <ParameterPanel on:topData={handleTopData} accessToken={accessToken} />
                 </div>
-                <div class="mid-right-div">
+                <div class="tw-flex-row">
+                    <Chart data={$data} />
+                </div>
+                <div class="tw-flex-row">
                     {#if $buttonVisible}
                     <button 
-                        class="poppins artist-genre-button"
+                        class="tw-h-[4vh] tw-w-[18vw] tw-px-1 tw-py-[0.5vh] tw-text-xs tw-text-[var(--dove-gray)] tw-bg-[rgb(16,41,84)] tw-rounded-full tw-border tw-border-[#eaeaea12] tw-cursor-pointer tw-transition-all tw-duration-300 tw-ml-auto tw-mr-auto tw-mb-8 hover:tw-bg-[rgb(12,24,45)] hover:tw-rounded-[4.5em] hover:tw-border-[rgb(12,24,45)]"
                         on:click={handleArtistGenreClick}
                         >
                         {$genreArtist ? "genres => artist" : "artist => genres"}
@@ -199,32 +208,37 @@
                 <CalculatingSpinner />
             {/if}
         </div>
-        <div class="bottom-div">
-            <p class="poppins">
-                Designed by 
-                <a
-                    class="poppins website-link"
-                    href="https://liucatherine.com/" 
-                    target="_blank"
-                    >
-                        Catherine Liu
-                </a> 
-                and Developed by 
-                <a
-                    class="poppins website-link"
-                    href="https://haeuncreative.com/" 
-                    target="_blank"
-                    >
-                        Nathan Kwon
-                </a>
+        <div class="tw-absolute tw-bottom-0 tw-flex tw-flex-row tw-justify-between tw-text-xs">
+            <div>
+                <p class="poppins">
+                    Designed by 
+                    <a
+                        class="poppins website-link"
+                        href="https://liucatherine.com/" 
+                        target="_blank"
+                        >
+                            Catherine Liu
+                    </a> 
+                    and Developed by 
+                    <a
+                        class="poppins website-link"
+                        href="https://haeuncreative.com/" 
+                        target="_blank"
+                        >
+                            Nathan Kwon
+                    </a>
                 </p>
+            </div>
+            <div>
                 <p>
                     <a href="/about" class="poppins nav-link">
                         About
                     </a>
                 </p>
-            
-            <!-- <div class="deco-line"/> -->
+            </div>
         </div>
+        
+            <!-- <div class="deco-line"/> -->
+
     </div>
 {/if}

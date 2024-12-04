@@ -19,23 +19,9 @@
     
 </script>
 
-<div id="genres-artists">
+<div id="genres-artists" class="tw-rounded-lg tw-flex tw-flex-col tw-w-[30vw] tw-text-center tw-transition-all tw-duration-200 tw-min-h-[20vh] tw-mr-0 tw-p-0">
     {#each genreObjKeys as genre}
         <GenreListComponent genre={genre} artists={genreObj[genre]['artists']} color={genreObj[genre]['color']}/>
     {/each}
 </div>
 
-<style>
-    #genres-artists {
-        /* border: 1px solid #eaeaea6a; */
-        border-radius: 15px;
-        display: flex;
-        flex-direction: column;
-        width: 30vw;
-        text-align: center;
-        transition: 0.25s;
-        min-height: 20vh;
-        margin-right: 0;
-        padding: 0;
-    }
-</style>

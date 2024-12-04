@@ -18,6 +18,12 @@
     /* margin */
 }
 
+.tailwind-layout {
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+}
+
 /* text classes */
 .poppins-100 {
     font-family: "Poppins", sans-serif;
